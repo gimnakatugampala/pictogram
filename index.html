@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="icon" type="image/jpg" href="img/icon.jpg">
+    <title>Pictogram - A Gimna Katugampala Production</title>
+</head>
+<body class="grey lighten-3">
+    
+    <!---NAVBAR-->
+    <nav class="z-depth-0 grey lighten-4">
+        <div class="nav-wrapper container">
+            <a href="#" class="brand-logo">
+                <h4 class="#9c27b0 purple-text">Pictogram</h4>
+            </a>
+            <ul class="right hide-on-med-and-down">
+                <li class="logged-in" style="display: none;">
+                    <a href="#" class="grey-text modal-trigger" data-target="modal-account">Account</a>
+                </li>
+                <li class="logged-in" style="display: none;">
+                    <a href="#" class="grey-text" id="logout">Logout</a>
+                </li>
+                <li class="admin" style="display: none;">
+                    <a href="#" class="grey-text modal-trigger" data-target="modal-create">Create Photo</a>
+                </li>
+                <li class="logged-out" style="display: none;">
+                    <a href="#" class="grey-text modal-trigger" data-target="modal-signup">SignUp</a>
+                </li>
+                <li class="logged-out" style="display: none;">
+                    <a href="#" class="grey-text modal-trigger" data-target="modal-login">LogIn</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+      <!--ADMIN  ACTION-->
+  <form class="center-align admin-actions admin" style="margin: 40px auto;max-width: 300px;display: none;">
+    <input type="text" placeholder="User email" id="admin-email" required >
+    <button class="btn-small #ba68c8 purple lighten-2 darken-2 z-depth-0">Make Admin</button>
+  </form>
+
+    <!---ACCOUNT MODAL-->
+    <div id="modal-account" class="modal">
+        <div class="modal-content center-align">
+            <h4>Account Details</h4><br>
+            <div class="account-details"></div>
+        </div>
+    </div>
+
+    <!---LOGIN MODAL-->
+    <div id="modal-login" class="modal">
+        <div class="modal-content">
+            <h4>Login</h4><br>
+            <form id="login-form">
+                <div class="input-field">
+                    <input type="text" id="login-email" required />
+                    <label for="login-email">Email Address</label>
+                </div>
+                <div class="input-field">
+                    <input type="password" id="login-password" required />
+                    <label for="login-password">Your Password</label>
+                </div>
+                <button class="btn #ba68c8 purple lighten-2 darken-2 z-depth-0">Login</button>
+                <p class="error pink-text"></p>
+            </form>
+        </div>
+    </div>
+
+    <!---SIGNUP MODAL-->
+    <div id="modal-signup" class="modal">
+        <div class="modal-content">
+            <h4>SignUp</h4><br>
+            <form id="signup-form">
+                <div class="input-field">
+                    <input type="text" id="signup-email" required />
+                    <label for="signup-email">Email Address</label>
+                </div>
+                <div class="input-field">
+                    <input type="password" id="signup-password" required />
+                    <label for="signup-password">Choose Password</label>
+                </div>
+                <div class="input-field">
+                    <input type="text" id="signup-bio" required />
+                    <label for="signup-bio">About You</label>
+                </div>
+                <button class="btn #ba68c8 purple lighten-2 darken-2 z-depth-0">SignUp</button>
+                <p class="error pink-text"></p>
+            </form>
+        </div>
+    </div>
+
+    <!---CREATE PHOTO-->
+    <div id="modal-create" class="modal">
+        <div class="modal-content">
+            <h4>Create Photo</h4><br>
+            <form id="create-form">
+                <div class="input-field">
+                <input type="text" id="title" required />
+                <label for="title">Title</label>
+                </div>
+                <div class="input-field">
+                <input type="text" id="file" required />
+                <label for="file">Photo URL</label>
+                </div>
+                <button class="btn #ba68c8 purple lighten-2 darken-2 z-depth-0">Upload</button>
+                <p class="error pink-text"></p>
+            </form>
+        </div>
+    </div>
+
+    <!--PHOTO LIST-->
+    <div class="container">
+    <div class="container-gallery">
+        
+    </div>
+    </div>
+
+    <!-- -FOOTER
+    <footer class="#ba68c8 purple lighten-2" style="padding: 50px;position: relative;top:520px;">
+        <p>Copyrights &copy; Pictogram 2020.</p>
+        <p>A Gimna Production Production</p>
+    </footer> -->
+
+
+
+                <!-- The core Firebase JS SDK is always required and must be listed first -->
+            <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-app.js"></script>
+            <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-auth.js"></script>
+            <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-firestore.js"></script>
+            <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-functions.js"></script>
+
+            <!-- TODO: Add SDKs for Firebase products that you want to use
+                https://firebase.google.com/docs/web/setup#available-libraries -->
+            <script src="https://www.gstatic.com/firebasejs/7.21.0/firebase-analytics.js"></script>
+
+            <script>
+            // Your web app's Firebase configuration
+            // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+            var firebaseConfig = {
+                apiKey: "AIzaSyCbpgRfLYwkqCcBYlncyC7uxuPkkIaNKI0",
+                authDomain: "pictogram-68166.firebaseapp.com",
+                databaseURL: "https://pictogram-68166.firebaseio.com",
+                projectId: "pictogram-68166",
+                storageBucket: "pictogram-68166.appspot.com",
+                messagingSenderId: "180179503072",
+                appId: "1:180179503072:web:fe91e98c57dd5d7b3a4d85",
+                measurementId: "G-80WE9WNKMW"
+            };
+            // Initialize Firebase
+            firebase.initializeApp(firebaseConfig);
+            firebase.analytics();
+
+            const db = firebase.firestore();
+            const auth = firebase.auth();
+            const functions = firebase.functions();
+            </script>
+
+     <!-- Compiled and minified JavaScript -->
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <script src="scripts/auth.js"></script>
+    <script src="scripts/index.js"></script>
+</body>
+</html>
